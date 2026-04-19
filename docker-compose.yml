@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  redpanda:
+    image: redpandadata/redpanda:latest
+    container_name: redpanda
+    command:
+      - redpanda start
+      - --smp 1
+      - --memory 512M
+      - --overprovisioned
+      - --kafka-addr internal://0.0.0.0:9092,external://0.0.0.0:19092
+      - --advertise-kafka-addr internal://redpanda:9092,external://localhost:19092
+      - --pandaproxy-addr 0.0.0.0:8082
+      - --advertise-pandaproxy-addr localhost:8082
+    ports:
+      - "19092:19092"  # Kafka API — your Spring Boot app connects here
+      - "8082:8082"    # HTTP Proxy (optional REST access to topics)
+
+  # Web UI to browse topics, messages, consumer groups
+  # Access at http://localhost:8090
+  console:
+    image: redpandadata/console:latest
+    container_name: redpanda-console
+    depends_on:
+      - redpanda
+    ports:
+      - "8090:8080"
+    environment:
+      KAFKA_BROKERS: redpanda:9092
+
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: customerdb
+      POSTGRES_USER: customer
+      POSTGRES_PASSWORD: customer123
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
