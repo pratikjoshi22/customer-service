@@ -246,9 +246,9 @@ Register a new customer.
 | Field | Type | Required | Example |
 |---|---|---|---|
 | `source` | String | Yes | `"WEB"`, `"MOBILE"`, `"BRANCH"` |
-| `firstName` | String | Yes | `"Pratik"` |
-| `lastName` | String | Yes | `"Joshi"` |
-| `email` | String | Yes | `"pratik@example.com"` |
+| `firstName` | String | Yes | `"kartik"` |
+| `lastName` | String | Yes | `"Varama"` |
+| `email` | String | Yes | `"kartik@example.com"` |
 | `phoneNumber` | String | Yes | `"+91-9876543210"` |
 | `dateOfBirth` | String (ISO) | Yes | `"1995-06-15"` |
 | `gender` | String | Yes | `"MALE"` |
@@ -298,9 +298,3 @@ Register a new customer.
 - [ ] Downstream subscriber services
 
 ---
-
-<div align="center">
-
-**Built with Cursor IDE**
-
-</div>
