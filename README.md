@@ -78,9 +78,9 @@ curl -s -X POST http://localhost:8080/api/customers/register \
   -H "Content-Type: application/json" \
   -d '{
     "source": "WEB",
-    "firstName": "Pratik",
-    "lastName": "Joshi",
-    "email": "pratik@example.com",
+    "firstName": "kartik",
+    "lastName": "Patel",
+    "email": "kartikpatel@example.com",
     "phoneNumber": "+91-9876543210",
     "dateOfBirth": "1995-06-15",
     "gender": "MALE",
